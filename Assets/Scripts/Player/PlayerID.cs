@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayID : MonoBehaviour
+public class PlayerID : MonoBehaviour
 {
     [SerializeField]
     int ID;

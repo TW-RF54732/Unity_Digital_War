@@ -7,7 +7,8 @@ public class PlayerSpawnBase : MonoBehaviour
 {
     FindLibObject findLibObject;
 
-    [SerializeField]GameObject spawner;
+    [SerializeField]GameObject spawner,playerBase;
+    [SerializeField] int SpawnRandomRange, testStartSpawnBase;
     private void Start()
     {
         startSet();
@@ -16,19 +17,20 @@ public class PlayerSpawnBase : MonoBehaviour
     public void SpawnBase(GameObject spawnMe, GameObject spawner)
     {
         GameObject copySpawnObj = Instantiate(spawnMe,spawner.transform);
+        copySpawnObj.transform.parent = playerBase.transform;
         copySpawnObj.active = true;
     }
 
     void startSet()
     {
         findLibObject = GameObject.FindAnyObjectByType<FindLibObject>();
-        GameObject spawner = gameObject.transform.Find(name="spawner").gameObject;
+        //GameObject spawner = gameObject.transform.Find(name="spawner").gameObject;
         
-        spawner.transform.position += new Vector3(Random.Range(-10,10),0.5f,Random.Range(-10,10));
+        spawner.transform.position += new Vector3(Random.Range(-SpawnRandomRange,SpawnRandomRange),0.5f,Random.Range(-SpawnRandomRange,SpawnRandomRange));
     }
     void startSpawnBase()
     {
-        spawner = this.transform.Find("spawner").gameObject;
-        SpawnBase(findLibObject.getObject(0), spawner);
+        //spawner = this.transform.Find("spawner").gameObject;
+        SpawnBase(findLibObject.getObject(testStartSpawnBase), spawner);
     }
 }

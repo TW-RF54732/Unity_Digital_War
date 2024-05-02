@@ -14,4 +14,8 @@ public class PlayerID : MonoBehaviour
         playerManager = playerManagerObj.GetComponent<PlayerManager>();
         ID = playerManager.getID();
     }
+    public int getID()
+    {
+        return ID;
+    }
 }

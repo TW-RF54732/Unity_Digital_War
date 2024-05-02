@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class SpawnID : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]GameObject playerObj;
+    PlayerID playerID;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] int soldierID;
+    private void Start()
     {
-        
+        playerObj = transform.parent.parent.gameObject;
+        playerID = playerObj.GetComponent<PlayerID>();
+        soldierID = playerID.getID();
     }
 }

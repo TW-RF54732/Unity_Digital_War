@@ -6,16 +6,28 @@ public class PlayerID : MonoBehaviour
 {
     [SerializeField]
     int ID;
+    bool isIdGet = false;
     public GameObject playerManagerObj;
 
     PlayerManager playerManager;
     private void Start()
     {
-        playerManager = playerManagerObj.GetComponent<PlayerManager>();
-        ID = playerManager.getID();
+        if(isIdGet == false)
+        {
+            playerManager = playerManagerObj.GetComponent<PlayerManager>();
+            ID = playerManager.getID();
+            isIdGet = true;
+        }
     }
     public int getID()
     {
-        return ID;
+        if (isIdGet == false)
+        {
+            playerManager = playerManagerObj.GetComponent<PlayerManager>();
+            ID = playerManager.getID();
+            isIdGet = true;
+            return ID;
+        }
+        else return ID;
     }
 }

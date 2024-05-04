@@ -268,6 +268,7 @@ MonoBehaviour:
   spawner: {fileID: 7400419182448863785}
   playerBase: {fileID: 5374094372809072348}
   SpawnRandomRange: 15
+  testStartSpawnBase: 1
 --- !u!114 &6303018864550780934
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,26 +6,32 @@ using UnityEngine.UIElements;
 public class PlayerSpawnBase : MonoBehaviour
 {
     FindLibObject findLibObject;
+    PlayerID playerID;
 
     [SerializeField]GameObject spawner,playerBase;
     [SerializeField] int SpawnRandomRange, testStartSpawnBase;
+
+    public int baseCount = 0;
+    int Id;
     private void Start()
     {
         startSet();
         startSpawnBase();
+        
     }
     public void SpawnBase(GameObject spawnMe, GameObject spawner)
     {
+        baseCount++;
         GameObject copySpawnObj = Instantiate(spawnMe,spawner.transform);
         copySpawnObj.transform.parent = playerBase.transform;
-        copySpawnObj.active = true;
+        copySpawnObj.name = $"Base {Id}-{baseCount}";
     }
 
     void startSet()
     {
         findLibObject = GameObject.FindAnyObjectByType<FindLibObject>();
-        //GameObject spawner = gameObject.transform.Find(name="spawner").gameObject;
-        
+        playerID = gameObject.GetComponent<PlayerID>();
+        Id = playerID.getID();
         spawner.transform.position += new Vector3(Random.Range(-SpawnRandomRange,SpawnRandomRange),0.5f,Random.Range(-SpawnRandomRange,SpawnRandomRange));
     }
     void startSpawnBase()

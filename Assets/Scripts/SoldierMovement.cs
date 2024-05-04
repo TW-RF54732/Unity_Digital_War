@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class SoldierMovement : MonoBehaviour
 {
-    public GameObject target;
+    [SerializeField]GameObject target;
     public float speed = 0.5f;
 
+    public void SetTarget(GameObject targetIn)
+    {
+        target = targetIn;
+    }
     private void FixedUpdate()
     {
         if (target != null)

@@ -8,14 +8,17 @@ public class UIControl : MonoBehaviour
 {
     GameObject reciveClickedObject;
 
-    [SerializeField] GameObject atkButton, defButton;
+    [SerializeField] GameObject atkButton, defButton,fightButton;
+    GameObject tmpAttacker, tmpTarget;
 
     SpawnID spawnID;
     PlayerID playerID;
+    AttackSystem attackSystem;
 
     private void Start()
     {
         playerID = gameObject.GetComponent<PlayerID>();
+        attackSystem = gameObject.GetComponent<AttackSystem>();
     }
     public void setUIposition(GameObject uiposition)
     {
@@ -25,11 +28,15 @@ public class UIControl : MonoBehaviour
             if (spawnID.GetID() == playerID.getID())
             {
                 atkButton.SetActive(true);
+                defButton.SetActive(false);
+                tmpAttacker = uiposition;
                 atkButton.transform.position = Input.mousePosition + new Vector3(100, 0, 0) + new Vector3(0, -50, 0);
             }
             if(spawnID.GetID() != playerID.getID())
             {
                 defButton.SetActive(true);
+                atkButton.SetActive(false);
+                tmpTarget = uiposition;
                 defButton.transform.position = Input.mousePosition + new Vector3(100,0,0) + new Vector3(0,-50,0);
             }
         }
@@ -39,6 +46,27 @@ public class UIControl : MonoBehaviour
             defButton.SetActive(false);
         }
     }
+
+    public void UIbtn_SetAttacker()
+    {
+        if(attackSystem.SetAttack(tmpAttacker,tmpTarget) == true)
+        {
+            showFightButton();
+        }
+    }
+    public void UIbtn_SetTarget()
+    {
+        if(attackSystem.SetAttack(tmpAttacker, tmpTarget) == true)
+        {
+            showFightButton();
+        }
+    }
+
+    void showFightButton()
+    {
+        fightButton.SetActive(true);
+    }
+
     private void Update()
     {
         if (Input.GetMouseButton(1))

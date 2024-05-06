@@ -7,11 +7,16 @@ public class SpawnID : MonoBehaviour
     [SerializeField]GameObject playerObj;
     PlayerID playerID;
 
-    [SerializeField] int soldierID;
+    [SerializeField] int itemID;
     private void Start()
     {
         playerObj = transform.parent.parent.gameObject;
         playerID = playerObj.GetComponent<PlayerID>();
-        soldierID = playerID.getID();
+        itemID = playerID.getID();
+    }
+
+    public int GetID()
+    {
+        return itemID;
     }
 }

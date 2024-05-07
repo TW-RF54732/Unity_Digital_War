@@ -6,13 +6,13 @@ public class BaseFight : MonoBehaviour
 {
     public int soldierAmount = 100;
     public float def = 0.5f,Atk = 1f;
-    int killed, dead;
 
-    public int baseFight(int hostileArmyAmount,float hostileArmyDef = 0f,float hostileArmyAtk = 1f)
+    public int baseFight(int hostileArmyDmg)
     {
-        
+        int kill = Mathf.RoundToInt(soldierAmount * Atk);
+        soldierAmount -= hostileArmyDmg;
         waiter(2);
-        return hostileArmyAmount;
+        return kill;
     }
     IEnumerator waiter(int seconds)
     {

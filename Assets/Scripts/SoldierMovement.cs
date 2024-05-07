@@ -6,7 +6,8 @@ public class SoldierMovement : MonoBehaviour
 {
     [SerializeField]GameObject target;
     public float speed = 5f;
-    public int armyAmount = 10;
+    public int armyAmount = 10, dead = 0;
+    float atk = 1;
     bool move = true;
 
     BaseFight baseFight;
@@ -25,9 +26,12 @@ public class SoldierMovement : MonoBehaviour
     {
         if(collision.gameObject == target)
         {
+            Debug.Log("hit");
             move = false;
             baseFight = collision.gameObject.GetComponent<BaseFight>();
-            armyAmount = baseFight.baseFight(armyAmount);
+            dead = baseFight.baseFight(Mathf.RoundToInt(armyAmount * atk));
+            armyAmount -= dead;
+            Destroy(gameObject);
         }
     }
 }

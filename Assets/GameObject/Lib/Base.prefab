@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1121024265426972714}
   - component: {fileID: 8812941868535981100}
   - component: {fileID: 1659552314866493676}
+  - component: {fileID: 5404272065278222964}
   m_Layer: 0
   m_Name: Base
   m_TagString: Base
@@ -119,4 +120,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObj: {fileID: 0}
-  soldierID: 0
+  itemID: 0
+--- !u!114 &5404272065278222964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244743911339069276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adc5adef0fb02de4e910b2b520d90555, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soldierAmount: 100
+  def: 0.5
+  Atk: 1

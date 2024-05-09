@@ -8,17 +8,19 @@ public class UIControl : MonoBehaviour
 {
     GameObject reciveClickedObject;
 
-    [SerializeField] GameObject atkButton, defButton,fightButton;
-    GameObject tmpAttacker, tmpTarget;
+    [SerializeField] GameObject atkButton, defButton,fightButton,buildButton,startBuildBtn;
+    GameObject tmpPlayerBase, tmpTarget;
 
     SpawnID spawnID;
     PlayerID playerID;
     AttackSystem attackSystem;
+    BuidingSystem buidingSystem;
 
     private void Start()
     {
         playerID = gameObject.GetComponent<PlayerID>();
         attackSystem = gameObject.GetComponent<AttackSystem>();
+        buidingSystem = gameObject.GetComponent <BuidingSystem>();
     }
     public void setUIposition(GameObject uiposition)
     {
@@ -28,13 +30,17 @@ public class UIControl : MonoBehaviour
             if (spawnID.GetID() == playerID.getID())
             {
                 atkButton.SetActive(true);
+                buildButton.SetActive(true);
                 defButton.SetActive(false);
-                tmpAttacker = uiposition;
-                atkButton.transform.position = Input.mousePosition + new Vector3(100, 0, 0) + new Vector3(0, -50, 0);
+                tmpPlayerBase = uiposition;
+                Vector3 mousePos = Input.mousePosition;
+                atkButton.transform.position = mousePos + new Vector3(100, 0, 0) + new Vector3(0, -50, 0);
+                buildButton.transform.position = mousePos + new Vector3(-100, 0, 0) + new Vector3(0, -50, 0);
             }
             if(spawnID.GetID() != playerID.getID())
             {
                 defButton.SetActive(true);
+                buildButton.SetActive(false);
                 atkButton.SetActive(false);
                 tmpTarget = uiposition;
                 defButton.transform.position = Input.mousePosition + new Vector3(100,0,0) + new Vector3(0,-50,0);
@@ -49,22 +55,33 @@ public class UIControl : MonoBehaviour
 
     public void UIbtn_SetAttacker()
     {
-        if(attackSystem.SetAttack(tmpAttacker,tmpTarget) == true)
+        if(attackSystem.SetAttack(tmpPlayerBase,tmpTarget) == true)
         {
             showFightButton();
         }
     }
     public void UIbtn_SetTarget()
     {
-        if(attackSystem.SetAttack(tmpAttacker, tmpTarget) == true)
+        if(attackSystem.SetAttack(tmpPlayerBase, tmpTarget) == true)
         {
             showFightButton();
         }
     }
 
+    public void buildBtnPress()
+    {
+        buildButton.SetActive(false);
+        atkButton.SetActive(false);
+        buidingSystem.setBuilder(tmpPlayerBase);
+    }
+
     void showFightButton()
     {
         fightButton.SetActive(true);
+    }
+    public void showStartBuildBtn()
+    {
+        startBuildBtn.SetActive(true);
     }
 
     private void Update()

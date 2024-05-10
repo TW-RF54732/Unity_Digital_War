@@ -7,6 +7,7 @@ public class PlayerSpawnBase : MonoBehaviour
 {
     FindLibObject findLibObject;
     PlayerID playerID;
+    Resource resource;
 
     [SerializeField]GameObject spawner,playerBase;
     [SerializeField] int SpawnRandomRange, testStartSpawnBase;
@@ -25,6 +26,8 @@ public class PlayerSpawnBase : MonoBehaviour
         GameObject copySpawnObj = Instantiate(spawnMe,spawner.transform);
         copySpawnObj.transform.parent = playerBase.transform;
         copySpawnObj.name = $"Base {Id}-{baseCount}";
+        resource = copySpawnObj.GetComponent<Resource>();
+        resource.setResourceAmount(100);
     }
 
     void startSet()
@@ -36,7 +39,6 @@ public class PlayerSpawnBase : MonoBehaviour
     }
     void startSpawnBase()
     {
-        //spawner = this.transform.Find("spawner").gameObject;
         SpawnBase(findLibObject.getObject(testStartSpawnBase), spawner);
     }
 }

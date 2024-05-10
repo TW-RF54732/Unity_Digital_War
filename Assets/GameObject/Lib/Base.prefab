@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8812941868535981100}
   - component: {fileID: 1659552314866493676}
   - component: {fileID: 5404272065278222964}
+  - component: {fileID: 957429230993609619}
   m_Layer: 0
   m_Name: Base
   m_TagString: Base
@@ -136,3 +137,16 @@ MonoBehaviour:
   soldierAmount: 100
   def: 0.5
   Atk: 1
+--- !u!114 &957429230993609619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3244743911339069276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5ef28d6cad91b40b5588b4d783510a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceAmount: 0

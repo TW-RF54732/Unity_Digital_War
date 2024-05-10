@@ -8,7 +8,7 @@ public class UIControl : MonoBehaviour
 {
     GameObject reciveClickedObject;
 
-    [SerializeField] GameObject atkButton, defButton,fightButton,buildButton,startBuildBtn;
+    [SerializeField] GameObject atkButton, defButton,fightButton,startBuildBtn;
     GameObject tmpPlayerBase, tmpTarget;
 
     SpawnID spawnID;
@@ -30,17 +30,14 @@ public class UIControl : MonoBehaviour
             if (spawnID.GetID() == playerID.getID())
             {
                 atkButton.SetActive(true);
-                buildButton.SetActive(true);
                 defButton.SetActive(false);
                 tmpPlayerBase = uiposition;
                 Vector3 mousePos = Input.mousePosition;
                 atkButton.transform.position = mousePos + new Vector3(100, 0, 0) + new Vector3(0, -50, 0);
-                buildButton.transform.position = mousePos + new Vector3(-100, 0, 0) + new Vector3(0, -50, 0);
             }
             if(spawnID.GetID() != playerID.getID())
             {
                 defButton.SetActive(true);
-                buildButton.SetActive(false);
                 atkButton.SetActive(false);
                 tmpTarget = uiposition;
                 defButton.transform.position = Input.mousePosition + new Vector3(100,0,0) + new Vector3(0,-50,0);
@@ -70,7 +67,6 @@ public class UIControl : MonoBehaviour
 
     public void buildBtnPress()
     {
-        buildButton.SetActive(false);
         atkButton.SetActive(false);
         buidingSystem.setBuilder(tmpPlayerBase);
     }

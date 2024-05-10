@@ -18,4 +18,12 @@ public class BaseFight : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
     }
+    public float[] getBaseDataFromFight()
+    {
+        float[] dataPackage = new float[3];
+        dataPackage[0] = soldierAmount;
+        dataPackage[1] = def;
+        dataPackage[2] = Atk;
+        return dataPackage;
+    }
 }

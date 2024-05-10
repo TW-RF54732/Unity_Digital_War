@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BuidingSystem : MonoBehaviour
 {
-    [SerializeField]GameObject buildPreview, whoBuild;
+    [SerializeField]GameObject buildPreview, whoBuild,baseSpawner;
     bool previewStart = false;
     [SerializeField]Camera cam;
 
@@ -19,7 +19,7 @@ public class BuidingSystem : MonoBehaviour
     public void startPreview()
     {
         previewStart = true;
-        buildPreview = Instantiate(buildPreview, gameObject.transform);
+        buildPreview = Instantiate(buildPreview, baseSpawner.transform);
         buildPreview.SetActive(true);
     }
     private void Update()

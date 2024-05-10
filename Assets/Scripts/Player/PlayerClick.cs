@@ -10,6 +10,7 @@ public class PlayerClick : MonoBehaviour
     [SerializeField]List<GameObject> needClickobj;
 
     GetClickedObject GCO;
+    LookAtClick lookAtClick;
 
     void Update()
     {
@@ -18,6 +19,11 @@ public class PlayerClick : MonoBehaviour
             clickObject = GetClickedObject(out RaycastHit hit);
             if(clickObject != null)
             {
+                if(clickObject.tag == "base")
+                {
+                    lookAtClick = gameObject.GetComponent<LookAtClick>();
+                    lookAtClick.setCamTarget(clickObject);
+                }
                 for (int i = 0; i < needClickobj.Count; i++)
                 {
                     GCO = needClickobj[i].GetComponent<GetClickedObject>();

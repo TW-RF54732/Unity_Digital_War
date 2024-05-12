@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6455831825442242134}
   m_Layer: 0
   m_Name: Build Preview
-  m_TagString: Base
+  m_TagString: Base Preview
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -7,7 +7,7 @@ public class PlayerClick : MonoBehaviour
 {
     [SerializeField]Camera cam;
     public GameObject clickObject;
-    [SerializeField]List<GameObject> needClickobj;
+    [SerializeField]GameObject needClickobj;
 
     GetClickedObject GCO;
     LookAtClick lookAtClick;
@@ -24,15 +24,12 @@ public class PlayerClick : MonoBehaviour
                     lookAtClick = gameObject.GetComponent<LookAtClick>();
                     lookAtClick.setCamTarget(clickObject);
                 }
-                for (int i = 0; i < needClickobj.Count; i++)
-                {
-                    GCO = needClickobj[i].GetComponent<GetClickedObject>();
-                    GCO.clickedObjectReceive(clickObject);
-                }
+                GCO = needClickobj.GetComponent<GetClickedObject>();
+                GCO.clickedObjectReceive(clickObject);
             }
         }
     }
-
+     
     GameObject GetClickedObject(out RaycastHit hit)
     {
         GameObject target = null;

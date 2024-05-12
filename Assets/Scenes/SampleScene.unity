@@ -2284,6 +2284,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3084307594565896883, guid: 057347037db36b24e85e15bdc59d7149,
         type: 3}
+      propertyPath: needClickobj
+      value: 
+      objectReference: {fileID: 845640303}
+    - target: {fileID: 3084307594565896883, guid: 057347037db36b24e85e15bdc59d7149,
+        type: 3}
       propertyPath: needClickobj.Array.size
       value: 1
       objectReference: {fileID: 0}

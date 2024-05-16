@@ -19,8 +19,9 @@ public class PlayerClick : MonoBehaviour
             clickObject = GetClickedObject(out RaycastHit hit);
             if(clickObject != null)
             {
-                if(clickObject.tag == "base")
+                if(clickObject.tag == "Base")
                 {
+                    Debug.Log("sended");
                     lookAtClick = gameObject.GetComponent<LookAtClick>();
                     lookAtClick.setCamTarget(clickObject);
                 }

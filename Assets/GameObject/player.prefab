@@ -972,8 +972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 4505704595218086903}
   clickObject: {fileID: 0}
-  needClickobj:
-  - {fileID: 8733467966517341647}
+  needClickobj: {fileID: 0}
 --- !u!1 &7118741024077698253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 7118741024077698253}
-  playerBase: {fileID: 3244743911339069276, guid: 0d240c231022f8c418ff3566724ea184,
+  playerBase: {fileID: 3244743911339069276, guid: bdcd792f267a19c428b0556716aa8b52,
     type: 3}
   SpawnRandomRange: 15
   testStartSpawnBase: 1
@@ -1239,6 +1238,7 @@ MonoBehaviour:
   atkButton: {fileID: 3365951961268612027}
   defButton: {fileID: 3460647798629087349}
   fightButton: {fileID: 1199899036560201701}
+  startBuildBtn: {fileID: 0}
 --- !u!114 &6462869970627497728
 MonoBehaviour:
   m_ObjectHideFlags: 0

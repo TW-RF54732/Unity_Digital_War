@@ -7,4 +7,8 @@ public class LookAtClick : MonoBehaviour
 {
     [SerializeField]GameObject target;//目標物，讓鏡頭看著的物體
     
+    public void setCamTarget(GameObject targ)
+    {
+        target = targ;
+    }
 }

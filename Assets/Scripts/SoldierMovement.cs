@@ -24,9 +24,9 @@ public class SoldierMovement : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("hit");
         if(collision.gameObject == target)
         {
-            Debug.Log("hit");
             move = false;
             baseFight = collision.gameObject.GetComponent<BaseFight>();
             dead = baseFight.baseFight(Mathf.RoundToInt(armyAmount * atk));

@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 
 public class UIControl : MonoBehaviour
 {
-    GameObject reciveClickedObject;
+
 
     [SerializeField] GameObject atkButton, defButton,fightButton,startBuildBtn;
     GameObject tmpPlayerBase, tmpTarget;
@@ -42,6 +42,10 @@ public class UIControl : MonoBehaviour
                 tmpTarget = uiposition;
                 defButton.transform.position = Input.mousePosition + new Vector3(100,0,0) + new Vector3(0,-50,0);
             }
+        }
+        else if(uiposition.tag == "Base Preview")
+        {
+
         }
         else
         {

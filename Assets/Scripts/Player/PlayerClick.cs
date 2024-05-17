@@ -9,9 +9,8 @@ public class PlayerClick : MonoBehaviour
     public GameObject clickObject;
     [SerializeField]GameObject needClickobj;
 
-    GetClickedObject GCO;
     LookAtClick lookAtClick;
-
+    UIControl uIControl;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -19,15 +18,18 @@ public class PlayerClick : MonoBehaviour
             clickObject = GetClickedObject(out RaycastHit hit);
             if(clickObject != null)
             {
-                if(clickObject.tag == "Base")
-                {
-                    Debug.Log("sended");
-                    lookAtClick = gameObject.GetComponent<LookAtClick>();
-                    lookAtClick.setCamTarget(clickObject);
-                }
-                GCO = needClickobj.GetComponent<GetClickedObject>();
-                GCO.clickedObjectReceive(clickObject);
+                sandClickObject(clickObject);
             }
+        }
+    }
+
+    void sandClickObject(GameObject SendObj)
+    {
+        uIControl.setUIposition(SendObj);
+        if (SendObj.tag == "Base")
+        {
+            lookAtClick = gameObject.GetComponent<LookAtClick>();
+            lookAtClick.setCamTarget(SendObj);
         }
     }
      
@@ -48,5 +50,9 @@ public class PlayerClick : MonoBehaviour
         List<RaycastResult> results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(ped, results);
         return results.Count > 0;
+    }
+    private void Start()
+    {
+        uIControl = FindAnyObjectByType<UIControl>();
     }
 }

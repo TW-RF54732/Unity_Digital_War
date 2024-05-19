@@ -26,6 +26,6 @@ public class AttackSystem : MonoBehaviour
     public void startWar()
     {
         BaseFight baseFight = attacker.gameObject.GetComponent<BaseFight>();
-        baseFight.GoFight(target);
+        baseFight.SendArmy(target);
     }
 }

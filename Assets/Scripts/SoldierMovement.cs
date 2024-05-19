@@ -7,10 +7,14 @@ public class SoldierMovement : MonoBehaviour
     [SerializeField]GameObject target;
     public float speed = 5f;
     public int armyAmount = 10, dead = 0;
-    float atk = 1;
+    float atk = 1f;
     bool move = true;
 
     BaseFight baseFight;
+    private void Start()
+    {
+        baseFight = target.GetComponent<BaseFight>();
+    }
     public void SetTarget(GameObject targetIn)
     {
         target = targetIn;
@@ -26,23 +30,22 @@ public class SoldierMovement : MonoBehaviour
     {
         if(collision.gameObject == target)
         {
-            //if (checkID())//ID相同，已成我方堡壘
-            //{
-                //baseFight.ArmyEnter(armyAmount);
-                //Destroy(gameObject);
-            //}
-            //else//ID不同，攻擊堡壘
-            //{
+            if (checkID())//ID相同，已成我方堡壘
+            {
+                baseFight.ArmyEnter(armyAmount);
+                Destroy(gameObject);
+            }
+            else//ID不同，攻擊堡壘
+            {
                 move = false;
-                baseFight = collision.gameObject.GetComponent<BaseFight>();
                 dead = baseFight.BaseGotAtk(Mathf.RoundToInt(armyAmount * atk), gameObject);
                 armyAmount -= dead;
-                if(armyAmount > 0 && checkID())
+                if(armyAmount > 0)
                 {
                     baseFight.ArmyEnter(armyAmount);
                 }
                 Destroy(gameObject);
-            //}
+            }
         }
     }
     bool checkID()

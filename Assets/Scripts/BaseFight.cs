@@ -29,7 +29,7 @@ public class BaseFight : MonoBehaviour
         }
         return kill;
     }
-    public void GoFight(GameObject AtkWho)
+    public void SendArmy(GameObject sandToObj)
     {
         if(soldierAmount >= goFightSoldierAmount)
         {
@@ -37,7 +37,7 @@ public class BaseFight : MonoBehaviour
             SoldierMovement soldierMovement = copyArmy.GetComponent<SoldierMovement>();
             soldierMovement.armyAmount = goFightSoldierAmount;
             soldierAmount -= goFightSoldierAmount;
-            soldierMovement.SetTarget(AtkWho);
+            soldierMovement.SetTarget(sandToObj);
         }
     }
     public void ArmyEnter(int soldierEnterAmount)

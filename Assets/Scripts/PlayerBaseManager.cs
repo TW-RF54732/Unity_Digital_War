@@ -6,6 +6,8 @@ public class PlayerBaseManager : MonoBehaviour
 {
     int ID,childCount;
 
+    [SerializeField]Material material;
+
     PlayerID playerID;
     SpawnID spawnID;
 
@@ -22,5 +24,6 @@ public class PlayerBaseManager : MonoBehaviour
         theBase.name = $"Base {ID}-{childCount}";
         spawnID = theBase.GetComponent<SpawnID>();
         spawnID.setID(ID);
+        theBase
     }
 }

@@ -32,7 +32,7 @@ public class PlayerSpawnBase : MonoBehaviour
 
     void startSet()
     {
-        findLibObject = FindAnyObjectByType<FindLibObject>();
+        findLibObject = GameObject.FindAnyObjectByType<FindLibObject>();
         playerID = gameObject.GetComponent<PlayerID>();
         Id = playerID.getID();
         spawner.transform.position += new Vector3(Random.Range(-SpawnRandomRange,SpawnRandomRange),0.5f,Random.Range(-SpawnRandomRange,SpawnRandomRange));

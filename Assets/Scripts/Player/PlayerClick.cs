@@ -7,10 +7,11 @@ public class PlayerClick : MonoBehaviour
 {
     [SerializeField]Camera cam;
     public GameObject clickObject;
-    [SerializeField]GameObject needClickobj;
+    [SerializeField]GameObject playerObject;
 
     LookAtClick lookAtClick;
-    UIControl uIControl;
+    UIControl UICtrl;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -18,18 +19,14 @@ public class PlayerClick : MonoBehaviour
             clickObject = GetClickedObject(out RaycastHit hit);
             if(clickObject != null)
             {
-                sandClickObject(clickObject);
+                if(clickObject.tag == "Base")
+                {
+                    Debug.Log("sended");
+                    lookAtClick = gameObject.GetComponent<LookAtClick>();
+                    lookAtClick.setCamTarget(clickObject);
+                }
+                UICtrl.setUIposition(clickObject);
             }
-        }
-    }
-
-    void sandClickObject(GameObject SendObj)
-    {
-        uIControl.setUIposition(SendObj);
-        if (SendObj.tag == "Base")
-        {
-            lookAtClick = gameObject.GetComponent<LookAtClick>();
-            lookAtClick.setCamTarget(SendObj);
         }
     }
      
@@ -53,6 +50,6 @@ public class PlayerClick : MonoBehaviour
     }
     private void Start()
     {
-        uIControl = FindAnyObjectByType<UIControl>();
+        UICtrl = playerObject.GetComponent<UIControl>();
     }
 }

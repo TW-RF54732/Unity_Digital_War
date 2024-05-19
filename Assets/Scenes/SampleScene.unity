@@ -1335,12 +1335,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resourceAmount: 0
---- !u!1 &905230748 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8542392098970057903, guid: 057347037db36b24e85e15bdc59d7149,
-    type: 3}
-  m_PrefabInstance: {fileID: 8078755976012975977}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &968354292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,6 +1409,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8078755976012975977}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1030128597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845640303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d46c54c85c4f62499ce454c9591e0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickedObject: {fileID: 0}
 --- !u!114 &1030128598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1475,7 +1482,6 @@ GameObject:
   - component: {fileID: 1075488831}
   - component: {fileID: 1075488830}
   - component: {fileID: 1075488829}
-  - component: {fileID: 1075488833}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -1570,33 +1576,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1075488833
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075488828}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!224 &1212068690 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6158263361296836009, guid: 057347037db36b24e85e15bdc59d7149,
@@ -1622,6 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  smoothTime: 0.25
 --- !u!1 &1649694760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2362,16 +2342,6 @@ PrefabInstance:
       propertyPath: playerManagerObj
       value: 
       objectReference: {fileID: 833592104}
-    - target: {fileID: 7920981156634635196, guid: 057347037db36b24e85e15bdc59d7149,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7920981156634635196, guid: 057347037db36b24e85e15bdc59d7149,
-        type: 3}
-      propertyPath: playerBase
-      value: 
-      objectReference: {fileID: 905230748}
     - target: {fileID: 8445588719400136854, guid: 057347037db36b24e85e15bdc59d7149,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2449,6 +2419,10 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2052452358}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4707101506706911576, guid: 057347037db36b24e85e15bdc59d7149,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1030128597}
     - targetCorrespondingSourceObject: {fileID: 4707101506706911576, guid: 057347037db36b24e85e15bdc59d7149,
         type: 3}
       insertIndex: -1

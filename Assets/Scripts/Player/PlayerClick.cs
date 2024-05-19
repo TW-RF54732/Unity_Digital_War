@@ -21,7 +21,6 @@ public class PlayerClick : MonoBehaviour
             {
                 if(clickObject.tag == "Base")
                 {
-                    Debug.Log("sended");
                     lookAtClick = gameObject.GetComponent<LookAtClick>();
                     lookAtClick.setCamTarget(clickObject);
                 }

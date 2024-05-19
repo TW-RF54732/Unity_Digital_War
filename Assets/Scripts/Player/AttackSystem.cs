@@ -25,8 +25,7 @@ public class AttackSystem : MonoBehaviour
     }
     public void startWar()
     {
-        GameObject copySoldier = Instantiate(findLibObject.getObject(2),attacker.transform) ;
-        soldierMovement = copySoldier.GetComponent<SoldierMovement>();
-        soldierMovement.SetTarget(target);
+        BaseFight baseFight = attacker.gameObject.GetComponent<BaseFight>();
+        baseFight.GoFight(target);
     }
 }

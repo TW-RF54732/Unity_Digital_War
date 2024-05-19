@@ -6,7 +6,7 @@ public class FindLibObject : MonoBehaviour
 {
     [SerializeField]List<GameObject> LibObjectList = new List<GameObject>();
 
-    public GameObject getObject(int object_id)
+    public GameObject getObjectFromLib(int object_id)
     {
         return LibObjectList[object_id];
     }

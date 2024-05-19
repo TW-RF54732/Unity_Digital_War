@@ -13,6 +13,7 @@ public class MeshGenerator : MonoBehaviour
 
     public int xSize = 20, zSize = 20;
 
+    MeshCollider meshCollider;
     private void Start()
     {
         mesh = new Mesh();
@@ -20,6 +21,8 @@ public class MeshGenerator : MonoBehaviour
 
         CreateShape();
         UpdateMesh();
+        meshCollider = gameObject.GetComponent<MeshCollider>();
+        meshCollider.sharedMesh = mesh;
     }
 
     void CreateShape()
@@ -29,7 +32,7 @@ public class MeshGenerator : MonoBehaviour
         {
             for(int x = 0; x <= xSize; x++)
             {
-                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 2f;
+                float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 5f;
                 vertices[i] = new Vector3(x, y, z);
                 i++;
             }
@@ -77,4 +80,5 @@ public class MeshGenerator : MonoBehaviour
     //        Gizmos.DrawSphere(vertices[i], .1f);
     //    }
     //}
+    
 }

@@ -10,7 +10,7 @@ public class PlayerSpawnBase : MonoBehaviour
     Resource resource;
 
     [SerializeField]GameObject spawner,playerBase;
-    [SerializeField] int SpawnRandomRange, testStartSpawnBase;
+    [SerializeField] int SpawnRandomRange, testStartSpawnBase, startBaseSoldier = 100,startResource = 100;
 
     public int baseCount = 0;
     int Id;
@@ -20,14 +20,15 @@ public class PlayerSpawnBase : MonoBehaviour
         startSpawnBase();
         
     }
-    public void SpawnBase(GameObject spawnMe, GameObject spawner)
+    public GameObject SpawnBase(GameObject spawnMe, GameObject spawner)
     {
         baseCount++;
         GameObject copySpawnObj = Instantiate(spawnMe,spawner.transform);
         copySpawnObj.transform.parent = playerBase.transform;
         copySpawnObj.name = $"Base {Id}-{baseCount}";
         resource = copySpawnObj.GetComponent<Resource>();
-        resource.setResourceAmount(100);
+        resource.setResourceAmount(startResource);
+        return copySpawnObj;
     }
 
     void startSet()
@@ -39,6 +40,8 @@ public class PlayerSpawnBase : MonoBehaviour
     }
     void startSpawnBase()
     {
-        SpawnBase(findLibObject.getObject(testStartSpawnBase), spawner);
+        GameObject copyBase = SpawnBase(findLibObject.getObjectFromLib(testStartSpawnBase), spawner);
+        BaseFight baseFight = copyBase.GetComponent<BaseFight>();
+        baseFight.soldierAmount = startBaseSoldier;
     }
 }

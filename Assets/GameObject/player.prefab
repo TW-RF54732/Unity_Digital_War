@@ -972,7 +972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 4505704595218086903}
   clickObject: {fileID: 0}
-  needClickobj: {fileID: 0}
+  playerObject: {fileID: 0}
 --- !u!1 &7118741024077698253
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,11 +1149,10 @@ GameObject:
   - component: {fileID: 5572565756565548033}
   - component: {fileID: 6164727859135477547}
   - component: {fileID: 5981230504037162722}
-  - component: {fileID: 9029062573964479067}
   - component: {fileID: 3703714009695499616}
   - component: {fileID: 6462869970627497728}
   m_Layer: 0
-  m_Name: Player
+  m_Name: player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1191,8 +1190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 7118741024077698253}
-  playerBase: {fileID: 3244743911339069276, guid: bdcd792f267a19c428b0556716aa8b52,
-    type: 3}
+  playerBase: {fileID: 5687436567665893432}
   SpawnRandomRange: 15
   testStartSpawnBase: 1
   baseCount: 0
@@ -1210,19 +1208,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ID: 0
   playerManagerObj: {fileID: 0}
---- !u!114 &9029062573964479067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8733467966517341647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d46c54c85c4f62499ce454c9591e0d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickedObject: {fileID: 0}
 --- !u!114 &3703714009695499616
 MonoBehaviour:
   m_ObjectHideFlags: 0

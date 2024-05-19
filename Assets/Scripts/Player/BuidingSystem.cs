@@ -8,6 +8,7 @@ public class BuidingSystem : MonoBehaviour
     [SerializeField]GameObject buildPreview, whoBuild,baseSpawner;
     bool previewStart = false;
     [SerializeField]Camera cam;
+    [SerializeField] LayerMask floorLayer;
 
     UIControl _UIControl;
     FindLibObject findLibObject;
@@ -34,20 +35,11 @@ public class BuidingSystem : MonoBehaviour
             Vector3 mouse = Input.mousePosition;
             Ray castPoint = cam.ScreenPointToRay(mouse);
             RaycastHit hit;
-            if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
+            if (Physics.Raycast(castPoint, out hit, Mathf.Infinity,floorLayer))
             {
-                buildPreview.transform.position = new Vector3(hit.point.x, 0.5f, hit.point.z);
+                buildPreview.transform.position = hit.point + new Vector3(0f,0.5f,0f);
             }
         }
     }
-    public void setBuilder(GameObject builder)
-    {
-        whoBuild = builder;
-    }
-    public void startBuild()
-    {
-        //®ø¯Ó¸ê·½
-        GameObject copySolder = Instantiate(findLibObject.getObject(2), whoBuild.transform);
-
-    }
+    
 }

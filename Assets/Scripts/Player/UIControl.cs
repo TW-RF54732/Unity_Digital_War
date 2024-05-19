@@ -68,7 +68,7 @@ public class UIControl : MonoBehaviour
     public void buildBtnPress()
     {
         atkButton.SetActive(false);
-        buidingSystem.setBuilder(tmpPlayerBase);
+        defButton.SetActive(false);
     }
 
     void showFightButton()

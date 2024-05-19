@@ -22,16 +22,40 @@ public class SoldierMovement : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, Time.deltaTime * speed);
         }
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)//attack
     {
         if(collision.gameObject == target)
         {
-            Debug.Log("hit");
-            move = false;
-            baseFight = collision.gameObject.GetComponent<BaseFight>();
-            dead = baseFight.baseFight(Mathf.RoundToInt(armyAmount * atk));
-            armyAmount -= dead;
-            Destroy(gameObject);
+            //if (checkID())//ID相同，已成我方堡壘
+            //{
+                //baseFight.ArmyEnter(armyAmount);
+                //Destroy(gameObject);
+            //}
+            //else//ID不同，攻擊堡壘
+            //{
+                move = false;
+                baseFight = collision.gameObject.GetComponent<BaseFight>();
+                dead = baseFight.BaseGotAtk(Mathf.RoundToInt(armyAmount * atk), gameObject);
+                armyAmount -= dead;
+                if(armyAmount > 0 && checkID())
+                {
+                    baseFight.ArmyEnter(armyAmount);
+                }
+                Destroy(gameObject);
+            //}
         }
+    }
+    bool checkID()
+    {
+        int checkID;
+        SpawnID spawnID;
+        spawnID = target.GetComponent<SpawnID>();
+        checkID = spawnID.GetID();
+        spawnID = gameObject.GetComponent<SpawnID>();
+        if(checkID == spawnID.GetID())
+        {
+            return true;//我方堡壘
+        }
+        else { return false; }//敵方
     }
 }

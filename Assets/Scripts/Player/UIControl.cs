@@ -29,6 +29,7 @@ public class UIControl : MonoBehaviour
             spawnID = uiposition.GetComponent<SpawnID>();
             if (spawnID.GetID() == playerID.getID())
             {
+                
                 atkButton.SetActive(true);
                 defButton.SetActive(false);
                 tmpPlayerBase = uiposition;

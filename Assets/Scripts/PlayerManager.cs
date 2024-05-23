@@ -21,9 +21,6 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < playerAmount; i++)
         {
             GameObject CopyPlayerObj = Instantiate(playerObj, this.transform);
-            CopyPlayerObj.name = $"Player{i + 1}";
-            PlayerID playerID = CopyPlayerObj.GetComponent<PlayerID>();
-            playerID.playerManagerObj = this.gameObject;
         }
     }
 }

@@ -32,16 +32,20 @@ public class SoldierMovement : MonoBehaviour
         {
             if (checkID())//ID相同，已成我方堡壘
             {
+                Debug.Log("enter");
                 baseFight.ArmyEnter(armyAmount);
                 Destroy(gameObject);
             }
             else//ID不同，攻擊堡壘
             {
+                Debug.Log("atk");
                 move = false;
                 dead = baseFight.BaseGotAtk(Mathf.RoundToInt(armyAmount * atk), gameObject);
                 armyAmount -= dead;
                 if(armyAmount > 0)
                 {
+                    Debug.Log("atk enter");
+                    Debug.Log(armyAmount);  
                     baseFight.ArmyEnter(armyAmount);
                 }
                 Destroy(gameObject);

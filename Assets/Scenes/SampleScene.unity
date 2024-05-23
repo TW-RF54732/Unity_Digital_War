@@ -446,7 +446,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Choose Attacker
+  m_text: Choose Base
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -949,6 +949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 5fb3f94e3701d3b47ac459bec7dc7830, type: 2}
+  playerObj: {fileID: 845640303}
 --- !u!1 &731056586
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1007,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Choose the targe
+  m_text: Choose Hostile Base
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1212,7 +1213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerAmount: 10
-  playerObj: {fileID: 8733467966517341647, guid: 8cddaffb3c5009440a9c66e6a128c40b,
+  playerObj: {fileID: 6031129140161062252, guid: 8cddaffb3c5009440a9c66e6a128c40b,
     type: 3}
 --- !u!4 &833592106
 Transform:
@@ -1597,7 +1598,7 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 8078755976012975977}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1441246806
+--- !u!114 &1441246812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1606,10 +1607,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1005424261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcc4bf206fd646146978d248c3df7aa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d687537154440a3913a9a3c7977978c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  CameraTarget: {fileID: 0}
+  FollowDistance: 4
+  MaxFollowDistance: 100
+  MinFollowDistance: 2
+  ElevationAngle: 30
+  MaxElevationAngle: 85
+  MinElevationAngle: 0
+  OrbitalAngle: 0
+  CameraMode: 0
+  MovementSmoothing: 1
+  RotationSmoothing: 1
+  MovementSmoothingValue: 25
+  RotationSmoothingValue: 5
+  MoveSensitivity: 2
 --- !u!1 &1649694760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,7 +2337,7 @@ PrefabInstance:
     - target: {fileID: 4154860417776013988, guid: 057347037db36b24e85e15bdc59d7149,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.42
+      value: 18.12
       objectReference: {fileID: 0}
     - target: {fileID: 4154860417776013988, guid: 057347037db36b24e85e15bdc59d7149,
         type: 3}
@@ -2357,7 +2371,17 @@ PrefabInstance:
       objectReference: {fileID: 833592104}
     - target: {fileID: 7920981156634635196, guid: 057347037db36b24e85e15bdc59d7149,
         type: 3}
+      propertyPath: playerCam
+      value: 
+      objectReference: {fileID: 1005424261}
+    - target: {fileID: 7920981156634635196, guid: 057347037db36b24e85e15bdc59d7149,
+        type: 3}
       propertyPath: playerBase
+      value: 
+      objectReference: {fileID: 639464192}
+    - target: {fileID: 7920981156634635196, guid: 057347037db36b24e85e15bdc59d7149,
+        type: 3}
+      propertyPath: playerBaseManager
       value: 
       objectReference: {fileID: 639464192}
     - target: {fileID: 8445588719400136854, guid: 057347037db36b24e85e15bdc59d7149,
@@ -2461,7 +2485,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6494217343948419255, guid: 057347037db36b24e85e15bdc59d7149,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1441246806}
+      addedObject: {fileID: 1441246812}
   m_SourcePrefab: {fileID: 100100000, guid: 057347037db36b24e85e15bdc59d7149, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

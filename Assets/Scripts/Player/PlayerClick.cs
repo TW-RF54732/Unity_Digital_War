@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.Examples;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -9,9 +11,14 @@ public class PlayerClick : MonoBehaviour
     public GameObject clickObject;
     [SerializeField]GameObject playerObject;
 
-    LookAtClick lookAtClick;
+    CameraController lookAtClick;
     UIControl UICtrl;
 
+    Vector3 camPos = new Vector3(0,20,0);
+    Vector3 zero = Vector3.zero;
+    Quaternion camLook;
+
+    bool lookback = false;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -21,14 +28,34 @@ public class PlayerClick : MonoBehaviour
             {
                 if(clickObject.tag == "Base")
                 {
-                    lookAtClick = gameObject.GetComponent<LookAtClick>();
-                    lookAtClick.setCamTarget(clickObject);
+                    camPos = gameObject.transform.position;
+                    camLook = gameObject.transform.rotation;
+                    lookAtClick.enabled = true;
+                    lookAtClick.CameraTarget = clickObject.transform;
+                    lookback = false;
                 }
                 UICtrl.setUIposition(clickObject);
             }
         }
+        if (Input.GetKeyDown("escape"))
+        {
+            lookAtClick.enabled = false;
+            lookback = true;
+        }
     }
-     
+    private void LateUpdate()
+    {
+        if(lookback)
+        {
+            gameObject.transform.position = Vector3.SmoothDamp(gameObject.transform.position, camPos, ref zero, 25f * Time.fixedDeltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, camLook, 5.0f * Time.deltaTime);
+            if(Vector3.Distance(transform.position, camPos) < 0.2f)
+            {
+                lookback = false;
+            }
+        }
+    }
+
     GameObject GetClickedObject(out RaycastHit hit)
     {
         GameObject target = null;
@@ -50,5 +77,7 @@ public class PlayerClick : MonoBehaviour
     private void Start()
     {
         UICtrl = playerObject.GetComponent<UIControl>();
+        lookAtClick = gameObject.GetComponent<CameraController>();
+
     }
 }

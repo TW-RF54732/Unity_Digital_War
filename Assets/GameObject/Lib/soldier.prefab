@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 20
+  speed: 10
   armyAmount: 10
   dead: 0
 --- !u!114 &1028089171997834111

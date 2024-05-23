@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5fb3f94e3701d3b47ac459bec7dc7830, type: 2}
+  - {fileID: 2100000, guid: b7267c47a742844419f3898433773858, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,6 +137,7 @@ MonoBehaviour:
   soldierAmount: 100
   def: 0.5
   Atk: 1
+  goFightSoldierAmount: 10
 --- !u!114 &1259992440296773215
 MonoBehaviour:
   m_ObjectHideFlags: 0

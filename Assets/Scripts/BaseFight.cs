@@ -22,7 +22,7 @@ public class BaseFight : MonoBehaviour
     {
         int kill = Mathf.RoundToInt(soldierAmount * Atk);
         soldierAmount -= Mathf.RoundToInt(hostileArmyDmg * def);
-        if (soldierAmount <= 0)
+        if (soldierAmount <= 0)//如果士兵足夠供打下此堡壘，則此堡壘加入該玩家
         {
             PlayerBaseManager playerBaseManager = Atker.transform.parent.parent.gameObject.GetComponent<PlayerBaseManager>();
             playerBaseManager.CheckInBase(gameObject);

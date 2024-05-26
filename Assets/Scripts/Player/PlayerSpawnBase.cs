@@ -11,6 +11,7 @@ public class PlayerSpawnBase : MonoBehaviour
     Resource resource;
     PlayerBaseManager playerBasemanager;
 
+    public GameObject startBase;
     [SerializeField]GameObject spawner,playerBase,playerCam;
     [SerializeField] int SpawnRandomRange, testStartSpawnBase, startBaseSoldier = 100,startResource = 100;
 
@@ -45,5 +46,6 @@ public class PlayerSpawnBase : MonoBehaviour
         baseFight.soldierAmount = startBaseSoldier;
         CameraController controller = playerCam.GetComponent<CameraController>();
         controller.CameraTarget = copyBase.transform;
+        startBase = copyBase;
     }
 }

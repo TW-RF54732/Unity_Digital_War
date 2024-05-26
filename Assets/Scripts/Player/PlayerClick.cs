@@ -26,7 +26,7 @@ public class PlayerClick : MonoBehaviour
             clickObject = GetClickedObject(out RaycastHit hit);
             if(clickObject != null)
             {
-                if(clickObject.tag == "Base")
+                if(clickObject.tag == "Base" || clickObject.tag == "Base Preview")
                 {
                     camPos = gameObject.transform.position;
                     camLook = gameObject.transform.rotation;
@@ -34,14 +34,19 @@ public class PlayerClick : MonoBehaviour
                     lookAtClick.CameraTarget = clickObject.transform;
                     lookback = false;
                 }
-                UICtrl.setUIposition(clickObject);
+                UICtrl.getClickObj(clickObject);
             }
         }
         if (Input.GetKeyDown("escape"))
         {
-            lookAtClick.enabled = false;
-            lookback = true;
+            ExitView();
+            UICtrl._AllView();
         }
+    }
+    public void ExitView()
+    {
+        lookAtClick.enabled = false;
+        lookback = true;
     }
     private void LateUpdate()
     {

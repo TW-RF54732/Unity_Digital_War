@@ -7,6 +7,7 @@ TagManager:
   - Base
   - Soldier
   - Base Preview
+  - Floor
   layers:
   - Default
   - TransparentFX

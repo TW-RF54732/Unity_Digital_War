@@ -3,90 +3,65 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class UIControl : MonoBehaviour
 {
     GameObject reciveClickedObject;
 
-    [SerializeField] GameObject atkButton, defButton,fightButton,startBuildBtn;
-    GameObject tmpPlayerBase, tmpTarget;
+    [SerializeField] GameObject allView, baseView, previewBase, lookWho;
 
     SpawnID spawnID;
     PlayerID playerID;
     AttackSystem attackSystem;
     BuidingSystem buidingSystem;
 
+    BaseView CbaseView;
+
     private void Start()
     {
         playerID = gameObject.GetComponent<PlayerID>();
         attackSystem = gameObject.GetComponent<AttackSystem>();
         buidingSystem = gameObject.GetComponent <BuidingSystem>();
+        PlayerSpawnBase spawnBase = gameObject.GetComponent<PlayerSpawnBase>();
+        CbaseView = baseView.GetComponent<BaseView>();
+        lookWho = spawnBase.startBase;
+        _BaseView();
     }
-    public void setUIposition(GameObject uiposition)
+    public void getClickObj(GameObject obj)
     {
-        if(uiposition.tag == "Base")
+        if(obj.tag != "Floor" || obj != null)
         {
-            spawnID = uiposition.GetComponent<SpawnID>();
-            if (spawnID.GetID() == playerID.getID())
+            lookWho = obj;
+            if (obj.tag == "Base")
             {
-                
-                atkButton.SetActive(true);
-                defButton.SetActive(false);
-                tmpPlayerBase = uiposition;
-                Vector3 mousePos = Input.mousePosition;
-                atkButton.transform.position = mousePos + new Vector3(100, 0, 0) + new Vector3(0, -50, 0);
+                _BaseView();
             }
-            if(spawnID.GetID() != playerID.getID())
+            if(obj.tag == "Base Preview")
             {
-                defButton.SetActive(true);
-                atkButton.SetActive(false);
-                tmpTarget = uiposition;
-                defButton.transform.position = Input.mousePosition + new Vector3(100,0,0) + new Vector3(0,-50,0);
+                _PreviewBaseView();
             }
         }
-        else
-        {
-            atkButton.SetActive(false);
-            defButton.SetActive(false);
-        }
+    }
+    public void _AllView()
+    {
+        baseView.SetActive(false);
+        previewBase.SetActive(false);
+        allView.SetActive(true);
+        lookWho = null;
+    }
+    public void _BaseView()
+    {
+        allView.SetActive(false);
+        previewBase.SetActive(false);
+        baseView.SetActive(true);
+        CbaseView.isLooking(lookWho);
+    }
+    public void _PreviewBaseView()
+    {
+        allView.SetActive(false);
+        baseView.SetActive(false);
+        previewBase.SetActive(true);
     }
 
-    public void UIbtn_SetAttacker()
-    {
-        if(attackSystem.SetAttack(tmpPlayerBase,tmpTarget) == true)
-        {
-            showFightButton();
-        }
-    }
-    public void UIbtn_SetTarget()
-    {
-        if(attackSystem.SetAttack(tmpPlayerBase, tmpTarget) == true)
-        {
-            showFightButton();
-        }
-    }
-
-    public void buildBtnPress()
-    {
-        atkButton.SetActive(false);
-        defButton.SetActive(false);
-    }
-
-    void showFightButton()
-    {
-        fightButton.SetActive(true);
-    }
-    public void showStartBuildBtn()
-    {
-        startBuildBtn.SetActive(true);
-    }
-
-    private void Update()
-    {
-        if (Input.GetMouseButton(1))
-        {
-            atkButton.SetActive(false);
-            defButton.SetActive(false );
-        }
-    }
 }

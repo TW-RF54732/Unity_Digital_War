@@ -8,7 +8,7 @@ public class BaseFight : MonoBehaviour
     public int soldierAmount;
     public float def = 0.5f,Atk = 1f;
 
-    [SerializeField]int goFightSoldierAmount = 10;
+    public int goFightSoldierAmount = 10;
 
     GameObject armyObj;
 

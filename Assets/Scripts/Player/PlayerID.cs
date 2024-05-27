@@ -17,7 +17,7 @@ public class PlayerID : MonoBehaviour
             ID = playerManager.getID();
             isIdGet = true;
             name();
-        }
+        }    
     }
     public int getID()
     {

@@ -42,6 +42,10 @@ public class PlayerClick : MonoBehaviour
             ExitView();
             UICtrl._AllView();
         }
+        if(Input.GetKeyDown(KeyCode.W)|| Input.GetKeyDown(KeyCode.A)|| Input.GetKeyDown(KeyCode.S)|| Input.GetKeyDown(KeyCode.D)|| Input.GetMouseButtonDown(1))
+        {
+            lookback = false;
+        }
     }
     public void ExitView()
     {

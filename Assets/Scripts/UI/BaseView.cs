@@ -2,32 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static InfoReader;
 
 public class BaseView : MonoBehaviour
 {
-    [SerializeField]GameObject ownRelationTXT,hostileRelationTXT, look;
+    [SerializeField]GameObject look;
+    [SerializeField] TextMeshProUGUI relationText;
     int ID;
 
-    
+    InfoReader infoReader;
 
     private void Start()
     {
-        PlayerID playerID = transform.parent.parent.gameObject.GetComponent<PlayerID>();
+        GameObject playerObj = transform.parent.parent.gameObject;
+        PlayerID playerID = playerObj.GetComponent<PlayerID>();
+
+        infoReader = playerObj.GetComponent<InfoReader>();
+
         ID = playerID.getID();
+
+        
     }
     public void isLooking(GameObject target)
     {
         look = target;
         SpawnID spawnID = target.GetComponent<SpawnID>();
-        if(ID == spawnID.GetID())
+        Base_Info baseInfo = infoReader.GetInfo(target);
+        if(baseInfo.relation == "Own")
         {
-            ownRelationTXT.SetActive(true);
-            hostileRelationTXT.SetActive(false);
+            relationText.text = "Own";
+            relationText.color = Color.cyan;
         }
         else
         {
-            ownRelationTXT.SetActive(false) ;
-            hostileRelationTXT.SetActive(true) ;
+            relationText.text = "Hostile";
+            relationText.color = Color.red;
         }
     }
 }

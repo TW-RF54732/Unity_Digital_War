@@ -51,7 +51,7 @@ public class InfoReader : MonoBehaviour
             stuff.Readable = true;
         }
     }
-    
+    GameObject checkUpdate;
     public Base_Info GetInfo(GameObject target)
     {
         SpawnID spawnID = target.GetComponent<SpawnID>();

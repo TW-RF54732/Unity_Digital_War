@@ -3,15 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static InfoReader;
 
 public class BaseView : MonoBehaviour
 {
-    [SerializeField]GameObject look;
+    [SerializeField]GameObject look,showArmy,showUnkowArmy;
     [SerializeField] TextMeshProUGUI relationText,baseID,soldierAmount,army;
+    [SerializeField]Scrollbar armyBar;
     int ID;
 
+    GameObject temp;
+
     InfoReader infoReader;
+    BaseFight baseFight;
 
     private void Start()
     {
@@ -23,6 +28,10 @@ public class BaseView : MonoBehaviour
         ID = playerID.getID();
 
         
+    }
+    private void Update()
+    {
+        isLooking(look);
     }
     public void isLooking(GameObject target)
     {
@@ -43,7 +52,28 @@ public class BaseView : MonoBehaviour
         else { baseID.text = "Unknow"; }
         if (baseInfo.SoldierAmount.Readable == true) { soldierAmount.text = Convert.ToString(baseInfo.SoldierAmount.Data); }
         else { soldierAmount.text = "Unknow"; }
-        if(baseInfo.Army.Readable == true) { army.text = Convert.ToString(baseInfo.Army.Data); }
-        else { army.text = "Unknow"; }
+        if(baseInfo.Army.Readable == true) 
+        { 
+            showUnkowArmy.SetActive(false);
+            showArmy.SetActive(true);
+        }
+        else 
+        { 
+            showUnkowArmy.SetActive(true);
+            showArmy.SetActive(false);
+        }
+    }
+    public void scrolBar()
+    {
+
+        float value;
+        int SoldierInArmy;
+
+        baseFight = look.GetComponent<BaseFight>();
+
+        value = armyBar.value;
+        SoldierInArmy = Mathf.RoundToInt(baseFight.soldierAmount * value);
+        baseFight.goFightSoldierAmount = SoldierInArmy;
+        army.text = SoldierInArmy.ToString();
     }
 }

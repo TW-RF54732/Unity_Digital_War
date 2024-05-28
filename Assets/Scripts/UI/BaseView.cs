@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,7 +8,7 @@ using static InfoReader;
 public class BaseView : MonoBehaviour
 {
     [SerializeField]GameObject look;
-    [SerializeField] TextMeshProUGUI relationText;
+    [SerializeField] TextMeshProUGUI relationText,baseID,soldierAmount,army;
     int ID;
 
     InfoReader infoReader;
@@ -38,5 +39,11 @@ public class BaseView : MonoBehaviour
             relationText.text = "Hostile";
             relationText.color = Color.red;
         }
+        if(baseInfo.Name.Readable == true) { baseID.text = Convert.ToString(baseInfo.Name.Data); }
+        else { baseID.text = "Unknow"; }
+        if (baseInfo.SoldierAmount.Readable == true) { soldierAmount.text = Convert.ToString(baseInfo.SoldierAmount.Data); }
+        else { soldierAmount.text = "Unknow"; }
+        if(baseInfo.Army.Readable == true) { army.text = Convert.ToString(baseInfo.Army.Data); }
+        else { army.text = "Unknow"; }
     }
 }

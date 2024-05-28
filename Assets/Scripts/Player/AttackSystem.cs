@@ -7,11 +7,8 @@ public class AttackSystem : MonoBehaviour
     [SerializeField] GameObject attacker,target;
     [SerializeField]int atkArmy = 10;
 
-    FindLibObject findLibObject;
-    SoldierMovement soldierMovement;
     private void Start()
     {
-        findLibObject = GameObject.FindAnyObjectByType<FindLibObject>();
     }
     public bool SetAttack(GameObject atk = null,GameObject tar = null)
     {

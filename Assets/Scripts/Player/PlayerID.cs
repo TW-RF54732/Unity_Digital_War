@@ -33,6 +33,7 @@ public class PlayerID : MonoBehaviour
     }
     void name()
     {
-        gameObject.name = $"player{ID}";
+        GameObject me = gameObject;
+        me.name = $"player{ID}";
     }
 }

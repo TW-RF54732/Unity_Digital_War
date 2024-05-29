@@ -41,7 +41,7 @@ public class PlayerSpawnBase : MonoBehaviour
     }
     void startSpawnBase()
     {
-        GameObject copyBase = SpawnBase(findLibObject.getObjectFromLib(testStartSpawnBase), spawner);
+        GameObject copyBase = SpawnBase(findLibObject.getObjectFromLib(testStartSpawnBase), spawner);//從物件庫中調用指定次件並實體化
         BaseFight baseFight = copyBase.GetComponent<BaseFight>();
         baseFight.soldierAmount = startBaseSoldier;
         CameraController controller = playerCam.GetComponent<CameraController>();

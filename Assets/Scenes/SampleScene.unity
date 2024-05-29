@@ -6380,6 +6380,11 @@ PrefabInstance:
       objectReference: {fileID: 639464192}
     - target: {fileID: 7920981156634635196, guid: 057347037db36b24e85e15bdc59d7149,
         type: 3}
+      propertyPath: startBaseSoldier
+      value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920981156634635196, guid: 057347037db36b24e85e15bdc59d7149,
+        type: 3}
       propertyPath: playerBaseManager
       value: 
       objectReference: {fileID: 639464192}

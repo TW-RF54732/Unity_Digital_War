@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -9,7 +9,7 @@ public class BaseFight : MonoBehaviour
     public float def = 0.5f,Atk = 1f;
 
     public int goFightSoldierAmount = 10;
-
+    
     GameObject armyObj;
 
     FindLibObject findLibObject;

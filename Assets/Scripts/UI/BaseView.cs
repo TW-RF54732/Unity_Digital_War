@@ -8,12 +8,12 @@ using static InfoReader;
 
 public class BaseView : MonoBehaviour
 {
-    [SerializeField]GameObject look,showArmy,showUnkowArmy;
+    [SerializeField]GameObject look,showArmy,showUnkowArmy,atkbtn,targetbtn;
     [SerializeField] TextMeshProUGUI relationText,baseID,soldierAmount,army;
     [SerializeField]Scrollbar armyBar;
     int ID;
 
-    GameObject temp;
+    GameObject atker;
 
     InfoReader infoReader;
     BaseFight baseFight;
@@ -42,11 +42,15 @@ public class BaseView : MonoBehaviour
         {
             relationText.text = "Own";
             relationText.color = Color.cyan;
+            atkbtn.SetActive(true);
+            targetbtn.SetActive(false);
         }
         else
         {
             relationText.text = "Hostile";
             relationText.color = Color.red;
+            atkbtn.SetActive(false) ;
+            targetbtn.SetActive(true) ;
         }
         if(baseInfo.Name.Readable == true) { baseID.text = Convert.ToString(baseInfo.Name.Data); }
         else { baseID.text = "Unknow"; }
@@ -75,5 +79,14 @@ public class BaseView : MonoBehaviour
         SoldierInArmy = Mathf.RoundToInt(baseFight.soldierAmount * value);
         baseFight.goFightSoldierAmount = SoldierInArmy;
         army.text = SoldierInArmy.ToString();
+    }
+    public void setAtker()
+    {
+        atker = look;
+    }
+    public void atkTarget()
+    {
+        baseFight = atker.GetComponent<BaseFight>();
+        baseFight.SendArmy(look);
     }
 }
